@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
-  children: React.ReactNode;
+  children: React.ReactNode; 
 };
 
 const Auth0ProviderWithNavigate = ({ children }: Props) => {

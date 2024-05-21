@@ -5,7 +5,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { cuisinesList } from "@/config/restaurant-options-config";
-import React from "react";
 import { useFormContext } from "react-hook-form";
 import CuisineCheckbox from "./CuisineCheckbox";
 

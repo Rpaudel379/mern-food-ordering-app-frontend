@@ -5,9 +5,16 @@ import { useNavigate } from "react-router-dom";
 
 const AuthCallbackPage = () => {
   const navigate = useNavigate();
+  /*
+   *  information about the user
+   */
   const { user } = useAuth0();
 
+  // custom hook
+  // creates users in the backend if not already created
+  // and uses that information to render user information in the protected routes pages
   const { createUser } = useCreateMyUser();
+
   const hasCreatedUser = useRef(false);
 
   useEffect(() => {

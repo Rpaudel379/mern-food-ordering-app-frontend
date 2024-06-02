@@ -6,6 +6,7 @@ import { toast } from "sonner";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const useGetMyUser = () => {
+  // gets access token without redirecting or changing the current browser state
   const { getAccessTokenSilently } = useAuth0();
 
   const getMyUserRequest = async (): Promise<User> => {
@@ -45,8 +46,14 @@ type CreateUserRequest = {
 };
 
 export const useCreateMyUser = () => {
+  // gets access token without redirecting or changing the current browser state
   const { getAccessTokenSilently } = useAuth0();
 
+  /**
+   * creates a user if not already created with status '201'
+   * if already created sends empty response with status '200'
+   * @param user
+   */
   const createMyUserRequest = async (user: CreateUserRequest) => {
     const accessToken = await getAccessTokenSilently();
 

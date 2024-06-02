@@ -5,9 +5,11 @@ import AuthCallbackPage from "./pages/AuthCallbackPage";
 import UserProfilePage from "./pages/UserProfilePage";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import ManageRestaurantPage from "./pages/ManageRestaurantPage";
+import SearchPage from "./pages/SearchPage";
 
 const AppRoutes = () => {
   return (
+    /* wrap all the routes in Routes Component */
     <Routes>
       <Route
         path="/"
@@ -18,8 +20,20 @@ const AppRoutes = () => {
         }
       />
 
+      {/* can't use auth0 hooks in Context Provider Component level  */}
+      {/* so `onRedirectCallback()` redirects to this route Component  */}
       <Route path="/auth-callback" element={<AuthCallbackPage />} />
 
+      <Route
+        path="/search/:city"
+        element={
+          <Layout showHero={false}>
+            <SearchPage />
+          </Layout>
+        }
+      />
+
+      {/* protected routes */}
       <Route element={<ProtectedRoute />}>
         <Route
           path="/user-profile"
@@ -39,6 +53,7 @@ const AppRoutes = () => {
         />
       </Route>
 
+      {/* catches all other routes */}
       <Route path="*" element={<Navigate to={"/"} />} />
     </Routes>
   );

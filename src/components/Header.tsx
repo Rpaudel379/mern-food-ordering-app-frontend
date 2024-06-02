@@ -13,6 +13,8 @@ const Header = () => {
           MERNEats.com
         </Link>
 
+
+        {/* two menus for mobile and desktop nav */}
         <div className="md:hidden">
           <MobileNav />
         </div>

@@ -1,9 +1,9 @@
-import { Auth0Provider } from "@auth0/auth0-react";
+import { AppState, Auth0Provider } from "@auth0/auth0-react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
-  children: React.ReactNode; 
+  children: React.ReactNode;
 };
 
 const Auth0ProviderWithNavigate = ({ children }: Props) => {
@@ -17,8 +17,8 @@ const Auth0ProviderWithNavigate = ({ children }: Props) => {
     throw new Error("unable to initalize auth");
   }
 
-  const onRedirectCallback = () => {
-    navigate("/auth-callback");
+  const onRedirectCallback = (appState?: AppState) => {
+    navigate(appState?.returnTo || "/auth-callback");
   };
 
   return (
